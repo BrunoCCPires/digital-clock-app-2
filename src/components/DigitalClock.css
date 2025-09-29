@@ -1,0 +1,199 @@
+.clock-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.clock-display {
+  background: linear-gradient(135deg, rgba(100, 108, 255, 0.1) 0%, rgba(83, 91, 242, 0.1) 100%);
+  border: 2px solid rgba(100, 108, 255, 0.3);
+  border-radius: 20px;
+  padding: 3rem 4rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  width: 100%;
+  text-align: center;
+}
+
+.clock-display:hover {
+  border-color: rgba(100, 108, 255, 0.5);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.time {
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #646cff;
+  font-variant-numeric: tabular-nums;
+  transition: font-size 0.2s ease;
+}
+
+.date {
+  font-size: 1.25rem;
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+}
+
+.clock-controls {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2rem;
+  width: 100%;
+}
+
+.clock-controls h3 {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.control-group {
+  margin-bottom: 1rem;
+}
+
+.control-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.87);
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.control-group label:hover {
+  background-color: rgba(100, 108, 255, 0.1);
+}
+
+.control-group input[type="checkbox"] {
+  width: 1.25rem;
+  height: 1.25rem;
+  cursor: pointer;
+  accent-color: #646cff;
+}
+
+.sync-status {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.sync-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.sync-syncing {
+  background-color: rgba(100, 108, 255, 0.2);
+  color: #646cff;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.sync-local {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.sync-error {
+  background-color: rgba(255, 100, 100, 0.2);
+  color: #ff6464;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .clock-display {
+    padding: 2rem 2rem;
+  }
+
+  .time {
+    font-size: 3rem;
+  }
+
+  .date {
+    font-size: 1rem;
+  }
+
+  .clock-controls {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .clock-display {
+    padding: 1.5rem 1rem;
+  }
+
+  .time {
+    font-size: 2.5rem;
+  }
+
+  .date {
+    font-size: 0.9rem;
+  }
+}
+
+/* Light mode adjustments */
+@media (prefers-color-scheme: light) {
+  .clock-display {
+    background: linear-gradient(135deg, rgba(100, 108, 255, 0.05) 0%, rgba(83, 91, 242, 0.05) 100%);
+    border-color: rgba(100, 108, 255, 0.2);
+  }
+
+  .time {
+    color: #535bf2;
+  }
+
+  .date {
+    color: rgba(33, 53, 71, 0.7);
+  }
+
+  .clock-controls {
+    background: rgba(0, 0, 0, 0.02);
+    border-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .clock-controls h3 {
+    color: #213547;
+  }
+
+  .control-group label {
+    color: #213547;
+  }
+
+  .control-group label:hover {
+    background-color: rgba(100, 108, 255, 0.08);
+  }
+
+  .sync-status {
+    border-top-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .sync-local {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: rgba(0, 0, 0, 0.5);
+  }
+}

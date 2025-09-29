@@ -1,37 +1,65 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useSubscribeDev } from '@subscribe.dev/react';
+import { AuthSection } from './components/AuthSection';
+import { DigitalClock } from './components/DigitalClock';
+import { SubscriptionPanel } from './components/SubscriptionPanel';
+import './App.css';
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  console.log(import.meta.env)
+function SignInScreen() {
+  const { signIn } = useSubscribeDev();
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="app-container">
+      <header className="app-header">
+        <h1>Digital Clock</h1>
+        <p className="app-subtitle">A beautiful digital clock with customizable settings</p>
+      </header>
+
+      <main className="app-main">
+        <div className="sign-in-prompt">
+          <div className="prompt-content">
+            <div className="prompt-icon">🕐</div>
+            <h2>Welcome to Digital Clock</h2>
+            <p>Sign in to save your clock preferences and access all features</p>
+            <button className="btn-primary-large" onClick={signIn}>
+              Sign In to Get Started
+            </button>
+          </div>
+        </div>
+      </main>
+
+      <footer className="app-footer">
+        <p>Powered by Subscribe.dev</p>
+      </footer>
+    </div>
+  );
 }
 
-export default App
+function AuthenticatedApp() {
+  return (
+    <div className="app-container">
+      <header className="app-header">
+        <h1>Digital Clock</h1>
+        <p className="app-subtitle">Your personalized digital clock</p>
+      </header>
+
+      <AuthSection />
+
+      <main className="app-main">
+        <DigitalClock />
+        <SubscriptionPanel />
+      </main>
+
+      <footer className="app-footer">
+        <p>Powered by Subscribe.dev</p>
+      </footer>
+    </div>
+  );
+}
+
+function App() {
+  const { isSignedIn } = useSubscribeDev();
+
+  return isSignedIn ? <AuthenticatedApp /> : <SignInScreen />;
+}
+
+export default App;

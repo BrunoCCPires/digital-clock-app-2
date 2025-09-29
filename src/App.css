@@ -1,42 +1,237 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
+.app-container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
   padding: 2rem;
+  gap: 2rem;
+}
+
+.app-header {
   text-align: center;
+  margin-bottom: 1rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.app-header h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 3rem;
+  background: linear-gradient(135deg, #646cff 0%, #535bf2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.app-subtitle {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.1rem;
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  width: 100%;
+}
+
+.app-footer {
+  text-align: center;
+  padding: 1rem 0;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.875rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Sign In Screen Styles */
+.sign-in-prompt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.prompt-content {
+  background: linear-gradient(135deg, rgba(100, 108, 255, 0.1) 0%, rgba(83, 91, 242, 0.1) 100%);
+  border: 2px solid rgba(100, 108, 255, 0.3);
+  border-radius: 24px;
+  padding: 3rem 2rem;
+  text-align: center;
+  width: 100%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.prompt-content:hover {
+  border-color: rgba(100, 108, 255, 0.5);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.prompt-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  animation: pulse-rotate 3s ease-in-out infinite;
+}
+
+@keyframes pulse-rotate {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
   }
-  to {
-    transform: rotate(360deg);
+  25% {
+    transform: rotate(-10deg) scale(1.05);
+  }
+  75% {
+    transform: rotate(10deg) scale(1.05);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+.prompt-content h2 {
+  margin: 0 0 1rem 0;
+  font-size: 2rem;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.prompt-content p {
+  margin: 0 0 2rem 0;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.btn-primary-large {
+  background-color: #646cff;
+  color: white;
+  border: none;
+  padding: 1rem 3rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(100, 108, 255, 0.4);
+  min-width: 200px;
+}
+
+.btn-primary-large:hover {
+  background-color: #535bf2;
+  box-shadow: 0 6px 24px rgba(100, 108, 255, 0.5);
+  transform: translateY(-3px);
+}
+
+.btn-primary-large:active {
+  transform: translateY(-1px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .app-container {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .app-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .app-subtitle {
+    font-size: 1rem;
+  }
+
+  .prompt-content {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .prompt-icon {
+    font-size: 3.5rem;
+  }
+
+  .prompt-content h2 {
+    font-size: 1.75rem;
+  }
+
+  .prompt-content p {
+    font-size: 1rem;
   }
 }
 
-.card {
-  padding: 2em;
+@media (max-width: 480px) {
+  .app-container {
+    padding: 1rem;
+  }
+
+  .app-header h1 {
+    font-size: 2rem;
+  }
+
+  .app-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .prompt-content {
+    padding: 2rem 1rem;
+  }
+
+  .prompt-icon {
+    font-size: 3rem;
+  }
+
+  .prompt-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .prompt-content p {
+    font-size: 0.95rem;
+  }
+
+  .btn-primary-large {
+    width: 100%;
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+  }
 }
 
-.read-the-docs {
-  color: #888;
+/* Light Mode Adjustments */
+@media (prefers-color-scheme: light) {
+  .app-subtitle {
+    color: rgba(33, 53, 71, 0.7);
+  }
+
+  .app-footer {
+    color: rgba(33, 53, 71, 0.5);
+    border-top-color: rgba(0, 0, 0, 0.05);
+  }
+
+  .prompt-content {
+    background: linear-gradient(135deg, rgba(100, 108, 255, 0.05) 0%, rgba(83, 91, 242, 0.05) 100%);
+    border-color: rgba(100, 108, 255, 0.2);
+  }
+
+  .prompt-content:hover {
+    border-color: rgba(100, 108, 255, 0.35);
+  }
+
+  .prompt-content h2 {
+    color: #213547;
+  }
+
+  .prompt-content p {
+    color: rgba(33, 53, 71, 0.7);
+  }
+}
+
+/* Focus Visible Styles for Accessibility */
+button:focus-visible {
+  outline: 3px solid #646cff;
+  outline-offset: 2px;
+}
+
+/* Smooth Transitions */
+* {
+  transition-property: background-color, border-color, color, box-shadow, transform;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
 }
